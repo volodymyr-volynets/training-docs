@@ -1,0 +1,14 @@
+<a id="p002_orm_tables"></a>
+<div class="nf_dnr_block">
+    <h2>ORM Tables</h2>
+    <p>Table classes reside in Model folder of a module or application. Changes to these classes generate changes to database objects in form of migration or direct schema changes.</p>
+    <p>For example if you use migrations and want to add a new column to the existing table you would need to modify columns property and then run:</p>
+    <pre>
+        <code class="hljs language-bash nf-code-snippet">
+            make migration_code_test verbose=1 # view changes
+            make migration_code_commit # generate migration files
+            make migration_db_commit # commit db changes
+        </code>
+    </pre>
+
+</div>
