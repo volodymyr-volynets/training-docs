@@ -1,0 +1,50 @@
+<a id="p003_orm_checks"></a>
+<div class="nf_dnr_block">
+    <h2>ORM Checks</h2>
+    <p>Check classes reside in Model folder of a module or application. Changes to these classes generate changes to database objects in form of migration or direct schema changes.</p>
+    <p>Example of Employees check model:</p>
+    <pre>
+        <code class="language-php nf-code-snippet">
+            /*
+             * This file is part of Numbers Framework.
+             *
+             * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+             *
+             * This source file is subject to the Apache 2.0 license that is bundled
+             * with this source code in the file LICENSE.
+             */
+
+            namespace Numbers\Backend\Db\Test\Model\Check;
+
+            use Object\Check;
+
+            class Employees extends Check
+            {
+                public $db_link;
+                public $db_link_flag;
+                public $schema;
+                public $name = 'sm_test_employees_first_name_check';
+                public $full_table_name = 'sm_test_employees';
+                public $backend = ['Oracle', 'MySQLi', 'PostgreSQL'];
+                public $sql_version = '1.0.0';
+
+                public function definition()
+                {
+                    $this->query->where('AND', function (& $query) {
+                        $query->where('OR', ['[NEW].first_name', '<>', '[NEW].last_name', true]);
+                    });
+                }
+            }
+        </code>
+    </pre>
+    <h3>Explanation of check model properties:</h3>
+    <ol class="nf_ol_simple">
+        <li><b>$db_link and $db_link_flag</b> - database links, determines which database connection to use. Set it for multi-database connection scenario. Default blank.</li>
+        <li><b>$schema</b> - database schema name.</li>
+        <li><b>$name</b> - database table name.</li>
+        <li><b>$full_table_name</b> - full table name including schema.</li>
+        <li><b>$backend</b> - \Db backend.</li>
+        <li><b>$sql_version</b> - once version is changed new migration will be generated.</li>
+        <li><b>definition()</b> - method to create Query Builder.</li>
+    </ol>
+</div>

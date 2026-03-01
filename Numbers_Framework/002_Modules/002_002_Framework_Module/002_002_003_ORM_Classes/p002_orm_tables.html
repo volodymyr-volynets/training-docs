@@ -4,7 +4,7 @@
     <p>Table classes reside in Model folder of a module or application. Changes to these classes generate changes to database objects in form of migration or direct schema changes.</p>
     <p>For example if you use migrations and want to add a new column to the existing table you would need to modify columns property and then run:</p>
     <pre>
-        <code class="hljs language-bash nf-code-snippet">
+        <code class="language-bash nf-code-snippet">
             make migration_code_test verbose=1 # view changes
             make migration_code_commit # generate migration files
             make migration_db_commit # commit db changes
@@ -12,15 +12,15 @@
     </pre>
     <p>Example of Tenants table model:</p>
     <pre>
-        <code class="hljs language-php nf-code-snippet">
+        <code class="language-php nf-code-snippet">
             /*
-            * This file is part of Numbers Framework.
-            *
-            * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
-            *
-            * This source file is subject to the Apache 2.0 license that is bundled
-            * with this source code in the file LICENSE.
-            */
+             * This file is part of Numbers Framework.
+             *
+             * (c) Volodymyr Volynets <volodymyr.volynets@gmail.com>
+             *
+             * This source file is subject to the Apache 2.0 license that is bundled
+             * with this source code in the file LICENSE.
+             */
 
             namespace Numbers\Tenants\Tenants\Model;
 
