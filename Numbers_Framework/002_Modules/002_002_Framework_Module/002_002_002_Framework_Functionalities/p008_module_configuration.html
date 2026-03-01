@@ -1,0 +1,89 @@
+<a id="p008_module_configuration"></a>
+<div class="nf_dnr_block">
+    <h2>Module Configuration</h2>
+    <p>Configuration files include:</p>
+    <ol class="nf_ol_simple">
+        <li><b>module.ini</b> - main configuration file per module.</li>
+        <li><b>Config/*</b> - additional configurations included manually.</li>
+    </ol>
+    <p>All configurations are in ini format.</p>
+    <h3>Module Configuration example:</h3>
+    <pre>
+        <code class="language-ini nf-code-snippet">
+            [module]
+            module.name = "Numbers\Tenants\Tenants"
+            module.code = "TM"
+            module.title = "T/M Tenant Management"
+            module.version = "1.0.25"
+
+            [dependencies]
+            dep.submodule.Numbers.Backend.Db.__any = 1
+            dep.submodule.Numbers.Backend.System.Modules = 1
+            dep.submodule.Numbers.Backend.ABAC = 1
+
+            ; dependencies for forms
+            dep.submodule.Numbers.Backend.IO.CSV = 1 ; csv and text import/export
+            dep.submodule.Numbers.Backend.IO.Renderers.Report.CSV = 1
+            dep.submodule.Numbers.Backend.IO.Renderers.List2.CSV = 1
+            dep.submodule.Numbers.Frontend.HTML.Form.Renderers.HTML = 1
+            dep.submodule.Numbers.Frontend.HTML.Form.Renderers.Report = 1
+
+            ; --- models (name and parent class) ---
+            dep.model.\Numbers\Tenants\Tenants\Model\Databases = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Tenants = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Environments = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Modules = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\ApplicationLayerTypes = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Module\Features = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Module\Linked = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Module\Sequences = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Module\Sequence\PostgreSQL = "\Object\Function2"
+            dep.model.\Numbers\Tenants\Tenants\Model\Assignments = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Assignment\Details = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Policy\Roots = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Policy\Folders = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Policies = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Policy\CodeSequence = "\Object\Sequence"
+            dep.model.\Numbers\Tenants\Tenants\Model\View\Policy\FoldersGrouppedCounter = "\Object\View"
+            dep.model.\Numbers\Tenants\Tenants\Model\View\Policy\PoliciesGrouppedCounter = "\Object\View"
+            ; other
+            dep.model.\Numbers\Tenants\Tenants\Model\Registries = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\ShortUrls = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Integration\Types = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Integration\Models = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Integration\Data = "\Object\Table"
+            dep.model.\Numbers\Tenants\Tenants\Model\Firewalls = "\Object\Table"
+
+            ; overrides
+            dep.override.\Numbers\Tenants\Tenants\Override\ACL\Resources = "\Object\ACL\Resources"
+            dep.override.\Numbers\Tenants\Tenants\Override\Aliases = "\Object\Data\Aliases"
+
+            ; imports
+            dep.model.\Numbers\Tenants\Tenants\Data\Import = "\Object\Import"
+            dep.model.\Numbers\Tenants\Tenants\Data\System = "\Object\Import"
+            dep.model.\Numbers\Tenants\Tenants\Data\ABAC = "\Object\Import"
+
+            ; forms
+            dep.form.\Numbers\Tenants\Tenants\Form\Activation\Modules = "Form"
+            dep.form.\Numbers\Tenants\Tenants\Form\Activation\Features = "Form"
+            dep.form.\Numbers\Tenants\Tenants\Form\Assignments = "Form"
+            dep.form.\Numbers\Tenants\Tenants\Form\Registries = "Form"
+            dep.form.\Numbers\Tenants\Tenants\Form\Policy\Folders = "Form"
+            dep.form.\Numbers\Tenants\Tenants\Form\Policies = "Form"
+
+            ; list
+            dep.form.\Numbers\Tenants\Tenants\Form\Activation\List2\Modules = "List"
+            dep.form.\Numbers\Tenants\Tenants\Form\Activation\List2\Features = "List"
+            dep.form.\Numbers\Tenants\Tenants\Form\List2\Assignments = "List"
+            dep.form.\Numbers\Tenants\Tenants\Form\List2\Registries = "List"
+            dep.form.\Numbers\Tenants\Tenants\Form\List2\Policies = "List"
+
+            ; media
+            dep.media.js.1.origin = "/Numbers/Tenants/Tenants/Media/JS/Policy/Folders.js"
+            dep.media.js.1.destination = "/numbers/media_submodules/Numbers_Tenants_Tenants_Media_JS_Policy_Folders.js"
+
+            [help]
+            ; T/M Tenant Management
+        </code>
+    </pre>
+</div>
