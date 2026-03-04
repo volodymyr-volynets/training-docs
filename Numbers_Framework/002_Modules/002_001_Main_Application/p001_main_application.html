@@ -1,0 +1,29 @@
+<div class="nf_dnr_block">
+    <h2>Main Application</h2>
+    <p>There are few ways to develop application using Numbers Framework:</p>
+    <ol class="nf_ol_simple">
+        <li><b>Application Folders</b> - you can put all necessary files into application folder and can start building your classes and models. More detailed is <a data-repository="this" href="../../002_Modules/002_002_Framework_Module/002_002_002_Framework_Functionalities/p002_application_folders.html#p002_application_folders">here</a>.</li>
+        <li><b>Private Modules</b> - you can create a self contained module and put into /libraries/private/ folder. Each module contains everything it needs to run. More detailed is <a data-repository="this" href="../../002_Modules/002_002_Framework_Module/002_002_002_Framework_Functionalities/p004_private_folders.html#p004_private_folders">here</a>.</li>
+        <li><b>Public Modules</b> - you can create a self contained module and post it using composer and then include it in application.ini file. More detailed is <a data-repository="this" href="../../002_Modules/002_002_Framework_Module/002_002_002_Framework_Functionalities/p003_vendor_repositories.html#p003_vendor_repositories">here</a>.</li>
+    </ol>
+    <p>Either way you choose to develop it would have pros and cons. For example:</p>
+    <ol class="nf_ol_simple">
+        <li>For application folders - you cannot port it to other projects and code cannot be reused. But its the fastest way to develop.</li>
+        <li>Private Modules - this is preferred way to develop since the code is portable to other projects. You can just copy module folder and include it in application.ini file and that would be it. Use this method if you need to keep code private.</li>
+        <li>Public Modules - this is preferred for commonly used open source modules. These can be installed by composer install and are public.</li>
+    </ol>
+    <p>There's skeleton public repository available to preset application:</p>
+    <pre>
+        <code class="language-bash nf-code-snippet">
+            composer create-project --no-install numbers/skeleton [project directory]
+
+            # for example
+
+            composer create-project --no-install numbers/skeleton my-test-project
+
+            # then build project
+
+            make build
+        </code>
+    </pre>
+</div>
